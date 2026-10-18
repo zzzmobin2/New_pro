@@ -78,6 +78,12 @@ const brand = (title: string, file: string): Skill => ({
   fg: "white",
   icon: <MaskIcon src={`/assets/logos/${file}`} title={title} />,
 });
+const textBrand = (title: string): Skill => ({
+  title,
+  bg: "black",
+  fg: "white",
+  icon: <span className="text-[9px] font-bold">{title}</span>,
+});
 const PROJECT_SKILLS = {
   next: brand("Next.js", "nextdotjs-mono.svg"),
   chakra: brand("Chakra UI", "chakra-ui-mono.svg"),
@@ -191,282 +197,215 @@ export type Project = {
 const projects: Project[] = [
   {
     id: "storekit",
-    category: "Commerce platform",
-    title: "StoreKit",
-    src: "/assets/projects-screenshots/storekit/landing.png",
-    screenshots: ["landing.png"],
+    category: "Gaming landing page",
+    title: "Zentry",
+    src: "/assets/projects-screenshots/storekit/zentry-long.png",
+    screenshots: ["zentry-long.png", "zentry-products.png", "zentry-story.png", "zentry-contact.png"],
     skills: {
       frontend: [
-        PROJECT_SKILLS.ts,
-        PROJECT_SKILLS.next,
         PROJECT_SKILLS.react,
-        PROJECT_SKILLS.reactNative,
+        textBrand("Vite"),
+        PROJECT_SKILLS.js,
         PROJECT_SKILLS.tailwind,
+        PROJECT_SKILLS.gsap,
+        textBrand("HTML5"),
+        textBrand("CSS3"),
       ],
-      backend: [
-        PROJECT_SKILLS.hono,
-        PROJECT_SKILLS.trpc,
-        PROJECT_SKILLS.drizzle,
-        PROJECT_SKILLS.postgres,
-        PROJECT_SKILLS.redis,
-        PROJECT_SKILLS.betterAuth,
-        PROJECT_SKILLS.cloudflare,
-        PROJECT_SKILLS.docker,
-      ],
+      backend: [],
     },
-    live: "https://storekit.app/",
-    // Private repo (commercial product) — intentionally no public source link
+    live: "https://radian-mobin.netlify.app/",
     get content() {
       return (
         <div>
           <TypographyP className="font-mono text-2xl text-center">
-            A production-grade, multi-tenant commerce platform — Shopify-class,
-            built solo.
+            A modern, immersive gaming-inspired landing page with smooth
+            animations and an interactive user experience.
           </TypographyP>
-          <TypographyP className="font-mono ">
-            Architected and built end-to-end as a single engineer: a
-            pnpm/Turborepo monorepo spanning 6 applications and 11 shared
-            packages — merchant dashboard, customer storefront, headless REST
-            API, and two React Native apps (customer + POS) — with a shared
-            type-safe core (54-table Drizzle/Postgres schema, 33 tRPC v11
-            routers, end-to-end inference). ~238K lines of TypeScript powering 4
-            storefront verticals: e-commerce, food delivery, quick-commerce, and
-            digital goods.
+          <TypographyP className="font-mono">
+            Inspired by Zentry, this React and Vite project uses Tailwind CSS
+            and GSAP to create an animated gaming world with responsive layouts,
+            scroll-driven transitions, and interactive details.
           </TypographyP>
           <ProjectsLinks live={this.live} repo={this.github} />
 
-          <TypographyH3 className="my-4 mt-8">Payments &amp; reliability</TypographyH3>
-          <p className="font-mono mb-2">
-            A PhonePe payment integration with OAuth2 token exchange, Redis-cached
-            per-store tokens, and idempotency keys on orders/transactions/refunds
-            so checkout survives refreshes and duplicate webhooks without
-            double-charging. Payment credentials are encrypted at rest and webhook
-            signatures verified to prevent tampering, with a BullMQ/Redis async
-            layer (5 retries, exponential backoff) driving notifications and order
-            jobs — every webhook event logged for replay.
-          </p>
+          <TypographyH3 className="my-4 mt-8">Highlights</TypographyH3>
+          <ul className="font-mono mb-2 list-disc pl-6">
+            <li>Smooth page and scroll animations powered by GSAP.</li>
+            <li>Interactive gaming-inspired visuals and transitions.</li>
+            <li>Responsive layouts for desktop and mobile.</li>
+            <li>Background music toggle and polished user interactions.</li>
+          </ul>
           <SlideShow
             images={[
-              `${BASE_PATH}/storekit/orders.png`,
-              `${BASE_PATH}/storekit/login.png`,
+              `${BASE_PATH}/storekit/zentry-products.png`,
+              `${BASE_PATH}/storekit/zentry-story.png`,
+              `${BASE_PATH}/storekit/zentry-contact.png`,
             ]}
           />
 
-          <TypographyH3 className="my-4 mt-8">AI storefront generation</TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Tech stack</TypographyH3>
           <p className="font-mono mb-2">
-            <em>In progress.</em> An agentic generator where an LLM writes real
-            storefront code inside isolated container sandboxes, gated by a
-            type-check + lint pass so broken code never lands — then deploys each
-            store programmatically as its own Cloudflare Worker through a
-            queue-driven pipeline, with a fleet health monitor that auto-rolls-back
-            failing deployments within minutes.
+            React, Vite, JavaScript (ES6+), Tailwind CSS, GSAP, HTML5, and CSS3.
           </p>
-
-          <TypographyH3 className="my-4 mt-8">Domain modeling &amp; breadth</TypographyH3>
-          <p className="font-mono mb-2">
-            An explicit order state-machine spans the 4 verticals with
-            illegal-transition guards, fronted by a typed event bus and a
-            per-store plugin registry for pluggable lifecycle behavior without
-            touching core code. The merchant dashboard ships a visual theme
-            builder, analytics, inventory, coupons, abandoned-cart recovery, and
-            Pixie — an in-product AI agent that manages the store via tool-calling
-            over live data. The POS app does Bluetooth ESC/POS thermal printing,
-            mDNS/TCP printer discovery, and barcode scanning.
-          </p>
-          <SlideShow
-            images={[
-              `${BASE_PATH}/storekit/storefront.png`,
-              `${BASE_PATH}/storekit/themes.png`,
-            ]}
-          />
         </div>
       );
     },
   },
   {
     id: "codingducks",
-    category: "Real-time coding platform",
-    title: "Coding Ducks",
-    src: "/assets/projects-screenshots/codingducks/landing.png",
-    screenshots: ["landing.png"],
+    category: "Youth-led environmental organization",
+    title: "Earth's Ants",
+    src: "/assets/projects-screenshots/codingducks/earths-ants-long.png",
+    screenshots: [
+      "earths-ants-long.png",
+      "earths-ants-home.png",
+      "earths-ants-impact.png",
+      "earths-ants-footer.png",
+    ],
     skills: {
       frontend: [
-        PROJECT_SKILLS.ts,
-        PROJECT_SKILLS.next,
         PROJECT_SKILLS.react,
+        textBrand("Vite"),
+        PROJECT_SKILLS.js,
         PROJECT_SKILLS.tailwind,
-        PROJECT_SKILLS.codemirror,
-        PROJECT_SKILLS.reactFlow,
+        PROJECT_SKILLS.gsap,
+        textBrand("HTML5"),
+        textBrand("CSS3"),
       ],
-      backend: [
-        PROJECT_SKILLS.node,
-        PROJECT_SKILLS.trpc,
-        PROJECT_SKILLS.drizzle,
-        PROJECT_SKILLS.postgres,
-        PROJECT_SKILLS.yjs,
-        PROJECT_SKILLS.hocuspocus,
-        PROJECT_SKILLS.betterAuth,
-        PROJECT_SKILLS.docker,
-      ],
+      backend: [],
     },
-    live: "https://www.codingducks.xyz/",
-    github: "https://github.com/Naresh-Khatri/Coding-Ducks",
+    live: "https://www.earthsants.org/",
+    github: "https://github.com/Mobin24/Project-Earth",
     get content() {
       return (
         <div>
           <TypographyP className="font-mono text-2xl text-center">
-            A multi-language judge, a CRDT collaborative editor, and a
-            system-design simulation game — in one platform.
+            Think, Live &amp; Work Like Ants — empowering youth through climate
+            education, research, innovation, and community action.
           </TypographyP>
-          <TypographyP className="font-mono ">
-            Coding Ducks is a full-stack, real-time coding platform built as a
-            production-grade Turborepo monorepo (2 apps, 7 shared packages) in
-            strict TypeScript — Next.js 16 / React 19, a tRPC v11 type-safe API,
-            PostgreSQL + Drizzle ORM (18 tables), and a standalone real-time
-            Node service, with enforced one-way apps → packages dependency
-            boundaries.
+          <TypographyP className="font-mono">
+            Founded in 2021, Earth&apos;s Ants is a Bangladesh-born,
+            youth-led environmental organization. It advances climate
+            education, environmental awareness, research, innovation, and
+            community-based sustainability action — moving beyond awareness
+            toward measurable, scalable impact.
           </TypographyP>
           <ProjectsLinks live={this.live} repo={this.github} />
 
           <TypographyH3 className="my-4 mt-8">
-            Ducklets — real-time collaborative editor
+            Who we are
           </TypographyH3>
           <p className="font-mono mb-2">
-            A multiplayer code editor built on Y.js CRDTs and a standalone
-            Hocuspocus WebSocket server — concurrent editing, live cursor
-            presence, and conflict-free merging persisted to Postgres as
-            versioned binary state. Secured by a custom HMAC-SHA256 signed-token
-            scheme (constant-time verification, 1-hour TTL) with owner / editor
-            / viewer RBAC re-verified live against the DB so permission
-            revocation takes effect mid-session. Includes room forking,
-            point-in-time snapshots, idempotent chat, and throttled live
-            previews (Puppeteer + Cloudflare R2, coalesced to ≤1 render/60s).
+            Guided by our motto, &quot;Think, Live &amp; Work Like Ants,&quot;
+            we empower young people to learn, lead, and act collectively
+            through institutional programmes, clean campus initiatives,
+            research-based discussions, digital campaigns, policy engagement,
+            and grassroots outreach. Our growing network spans 100+ institutions
+            in 16 countries, connecting students, educators, experts, youth
+            leaders, and communities.
+          </p>
+          <TypographyH3 className="my-4 mt-8">Our mission</TypographyH3>
+          <p className="font-mono mb-2">
+            Earth&apos;s Ants exists to empower youth as leaders, innovators,
+            and changemakers for a sustainable future. Through climate
+            education, research, community engagement, and innovation-driven
+            initiatives, we equip young people with the knowledge, skills, and
+            opportunities to address environmental challenges. By connecting
+            youth, institutions, experts, and communities, we turn awareness
+            into practical solutions that strengthen climate resilience,
+            protect biodiversity, and promote responsible living.
+          </p>
+          <TypographyH3 className="my-4 mt-8">Our vision &amp; reach</TypographyH3>
+          <p className="font-mono mb-2">
+            We envision sustainability as a shared responsibility, with
+            communities guided by science, education, and innovation to protect
+            nature and build a resilient planet. Our aspiration is a world
+            where sustainable living becomes a culture and every individual
+            becomes a guardian of the planet. Our youth network reaches 100+
+            institutions nationally and spans more than 16 countries, with the
+            ambition of helping Bangladesh become a global model for
+            sustainability by 2040.
           </p>
           <SlideShow
             images={[
-              `${BASE_PATH}/codingducks/ducklets-editor.png`,
-              `${BASE_PATH}/codingducks/ducklets.png`,
+              `${BASE_PATH}/codingducks/earths-ants-home.png`,
+              `${BASE_PATH}/codingducks/earths-ants-impact.png`,
+              `${BASE_PATH}/codingducks/earths-ants-footer.png`,
             ]}
           />
-
-          <TypographyH3 className="my-4 mt-8">
-            CD Judge — in-house code execution engine
-          </TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Our initiatives</TypographyH3>
           <p className="font-mono mb-2">
-            A free, self-hostable, Judge0-class execution engine supporting 10
-            languages (Python, JS, TS, Java, C, C++, Rust, Go, Ruby, PHP) with per-language
-            driver/harness generation that injects test cases, parses typed
-            arguments, and redacts hidden-test output. An asynchronous submit →
-            poll → verdict pipeline uses an optimistic-locking finalizer
-            (UPDATE … WHERE status=&apos;running&apos;) to guarantee exactly-once
-            streak/scoring under concurrent polling, plus &quot;beats X%&quot;
-            runtime-percentile ranking via SQL window aggregates.
+            Shonar Tori is our sustainable lifestyle initiative and social
+            enterprise, preserving Bengal&apos;s cultural heritage while
+            creating opportunities for rural artisans and traditional
+            craftsmen. ANTHROGEN Lab is our research and innovation platform,
+            bringing young researchers together to explore environmental
+            challenges and develop practical solutions for climate resilience
+            and sustainability.
           </p>
-          <SlideShow
-            images={[
-              `${BASE_PATH}/codingducks/problems.png`,
-              `${BASE_PATH}/codingducks/problem.png`,
-              `${BASE_PATH}/codingducks/machine-coding.png`,
-            ]}
-          />
-
-          <TypographyH3 className="my-4 mt-8">
-            System Design — simulation game
-          </TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Tech stack</TypographyH3>
           <p className="font-mono mb-2">
-            An interactive puzzle game where users assemble architectures from
-            16 typed building blocks on a React Flow canvas, then run them
-            through a pure-TypeScript, client-side traffic-simulation engine —
-            topological propagation, capacity/latency modeling, cache-warmth
-            EMA, SPOF detection, and DDoS &amp; chaos-fault injection. A 3-star
-            scoring model across reliability / performance / efficiency spans 10
-            progressively harder levels, guarded by a calibration suite
-            (node&nbsp;--test) that runs reference designs 15× through the real
-            engine to assert each level stays beatable-but-hard (optimal ⇒ 3★,
-            naive ⇒ ≤2★, broken ⇒ fail).
+            React, Vite, JavaScript (ES6+), Tailwind CSS, GSAP, HTML5, and CSS3.
           </p>
-          <SlideShow images={[`${BASE_PATH}/codingducks/sysdesign.png`]} />
         </div>
       );
     },
   },
   {
     id: "gumbalup",
-    category: "Real-time quiz platform",
-    title: "Gumbalup",
-    src: "/assets/projects-screenshots/gumbalup/landing.png",
-    screenshots: ["landing.png"],
+    category: "Responsive e-commerce landing page",
+    title: "Nike Landing Page",
+    src: "/assets/projects-screenshots/gumbalup/nike-long.png",
+    screenshots: [
+      "nike-long.png",
+      "nike-products.png",
+      "nike-quality.png",
+      "nike-offer.png",
+      "nike-footer.png",
+    ],
     skills: {
       frontend: [
-        PROJECT_SKILLS.ts,
-        PROJECT_SKILLS.next,
         PROJECT_SKILLS.react,
+        textBrand("Vite"),
+        PROJECT_SKILLS.js,
         PROJECT_SKILLS.tailwind,
-        PROJECT_SKILLS.motion,
+        textBrand("HTML5"),
+        textBrand("CSS3"),
       ],
-      backend: [
-        PROJECT_SKILLS.trpc,
-        PROJECT_SKILLS.partykit,
-        PROJECT_SKILLS.drizzle,
-        PROJECT_SKILLS.postgres,
-        PROJECT_SKILLS.betterAuth,
-        PROJECT_SKILLS.cloudflare,
-        PROJECT_SKILLS.docker,
-      ],
+      backend: [],
     },
-    live: "https://gumbalup.com/",
-    // Private repo (commercial product) — intentionally no public source link
+    live: "https://69786bdd523a4094b9dc1986--singular-smakager-f83736.netlify.app/",
+    github: "https://github.com/Mobin24/Nike-Landing-Page",
     get content() {
       return (
         <div>
           <TypographyP className="font-mono text-2xl text-center">
-            A live, interactive quiz &amp; audience-engagement platform — built
-            solo, end-to-end.
+            A modern, fully responsive Nike-inspired landing page built with
+            React and Tailwind CSS.
           </TypographyP>
-          <TypographyP className="font-mono ">
-            A production-grade, multi-tenant SaaS where organizations build
-            quizzes (manually or with AI) and run live, host-driven games —
-            players join from any device via room code / QR and compete on a
-            real-time, server-authoritative leaderboard. Also supports async
-            self-paced quizzes, team mode, anti-cheat monitoring, analytics,
-            billing, and white-labeling. ~43.5K lines of TypeScript across 257
-            files.
+          <TypographyP className="font-mono">
+            Built as part of a frontend practice journey, this project focuses
+            on mastering Tailwind CSS and improving component-based UI
+            development with React. It is a learning project and is not
+            affiliated with Nike.
           </TypographyP>
           <ProjectsLinks live={this.live} repo={this.github} />
-
-          <TypographyH3 className="my-4 mt-8">
-            Server-authoritative game engine
-          </TypographyH3>
-          <p className="font-mono mb-2">
-            A real-time game engine on PartyKit (Cloudflare Durable Objects +
-            WebSockets): a per-room in-memory state machine with an authoritative
-            1-second timer, speed-rank + streak scoring, deterministic
-            tie-broken leaderboards, team mode, and graceful reconnect/replay —
-            ~2,800 lines of game logic behind a typed message protocol (42
-            discriminated-union variants). Correctness is never sent to clients
-            during an active question, so players can&apos;t sniff answers or
-            game the clock.
-          </p>
-          <SlideShow images={[`${BASE_PATH}/gumbalup/dashboard.png`]} />
-
-          <TypographyH3 className="my-4 mt-8">
-            Edge-to-DB security boundary &amp; AI authoring
-          </TypographyH3>
-          <p className="font-mono mb-2">
-            The edge worker never connects to Postgres directly — it proxies all
-            persistence through a shared-secret internal HTTPS API on Next.js,
-            keeping the database unreachable from the public internet while the
-            worker stays stateless and edge-deployed. A fully type-safe layer (17
-            tRPC routers, 5 authorization tiers, Zod) backs it, with LLM-powered
-            quiz authoring (Groq / Llama) from topics or uploaded PDFs, quota-
-            metered per org, plus analytics with CSV/Excel/PDF export.
-          </p>
           <SlideShow
             images={[
-              `${BASE_PATH}/gumbalup/editor.png`,
-              `${BASE_PATH}/gumbalup/library.png`,
+              `${BASE_PATH}/gumbalup/nike-products.png`,
+              `${BASE_PATH}/gumbalup/nike-quality.png`,
+              `${BASE_PATH}/gumbalup/nike-offer.png`,
+              `${BASE_PATH}/gumbalup/nike-footer.png`,
             ]}
           />
+          <TypographyH3 className="my-4 mt-8">Tech stack</TypographyH3>
+          <p className="font-mono mb-2">
+            React, Tailwind CSS, JavaScript, and Vite.
+          </p>
+          <p className="font-mono mb-2">
+            Thanks to Adrian Hajdin and JavaScript Mastery for their guidance
+            and learning resources.
+          </p>
         </div>
       );
     },

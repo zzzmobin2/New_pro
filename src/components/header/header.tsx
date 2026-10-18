@@ -20,6 +20,7 @@ const Header = ({ loader }: HeaderProps) => {
     <motion.header
       className={cn(
         styles.header,
+        isActive && styles.menuOpen,
         "transition-colors delay-100 duration-500 ease-in z-[1000]"
       )}
       style={{

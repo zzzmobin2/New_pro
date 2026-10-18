@@ -107,6 +107,13 @@
   }
 }
 
+@media only screen and (max-width: 999px) {
+  .menuOpen {
+    position: relative;
+    z-index: 20;
+  }
+}
+
 @media only screen and (min-width: 600px) {
   .header {
     .bar {

@@ -8,7 +8,8 @@ const links: Link[] = [
   },
   {
     title: 'About',
-    href: '/#about',
+    href: 'https://www.linkedin.com/in/mobin00/',
+    target: '_blank',
     thumbnail: '/assets/nav-link-previews/about.png'
   },
   {
