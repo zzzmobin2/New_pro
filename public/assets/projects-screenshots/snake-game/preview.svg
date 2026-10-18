@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-labelledby="title desc">
+  <title id="title">Snake Game preview</title>
+  <desc id="desc">A dark game board with a white snake, red target, score, and timer.</desc>
+  <rect width="1200" height="560" fill="#242222"/>
+  <g fill="#d4d4d4" font-family="Arial, sans-serif" font-size="23" font-weight="700">
+    <text x="36" y="45">High Score: 0</text>
+    <text x="565" y="45">Score: 30</text>
+    <text x="1070" y="45">Time: 0-15</text>
+  </g>
+  <rect x="32" y="68" width="1136" height="456" fill="none" stroke="#393737"/>
+  <defs>
+    <pattern id="grid" width="68" height="68" patternUnits="userSpaceOnUse">
+      <circle cx="34" cy="34" r="33" fill="none" stroke="#343232" stroke-width="1.5"/>
+    </pattern>
+  </defs>
+  <rect x="33" y="69" width="1134" height="454" fill="url(#grid)"/>
+  <g fill="#f2f7f9">
+    <circle cx="548" cy="310" r="34"/>
+    <circle cx="616" cy="310" r="34"/>
+    <circle cx="684" cy="310" r="34"/>
+    <circle cx="752" cy="310" r="34"/>
+  </g>
+  <circle cx="956" cy="242" r="34" fill="#ff393d"/>
+</svg>

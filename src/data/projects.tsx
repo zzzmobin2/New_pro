@@ -188,6 +188,7 @@ export type Project = {
   category: string;
   title: string;
   src: string;
+  background?: string;
   screenshots: string[];
   skills: { frontend: Skill[]; backend: Skill[] };
   content: React.ReactNode | any;
@@ -766,4 +767,97 @@ const projects: Project[] = [
     },
   },
 ];
+projects.splice(
+  3,
+  projects.length - 3,
+  {
+    id: "greenfluence",
+    category: "Sustainable advertising competition",
+    title: "GreenFluence 2026",
+    src: "https://image.thum.io/get/width/1200/crop/900/noanimate/https://green-fluence.vercel.app/",
+    background: "/assets/backgrounds/waku.jpg",
+    screenshots: [],
+    skills: {
+      frontend: [PROJECT_SKILLS.react, textBrand("Vite"), PROJECT_SKILLS.js, PROJECT_SKILLS.tailwind],
+      backend: [],
+    },
+    live: "https://green-fluence.vercel.app/#about",
+    github: "https://github.com/Mobin24/GreenFluence",
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono text-2xl text-center">
+            A national sustainable brand storytelling and digital campaign competition.
+          </TypographyP>
+          <TypographyP className="font-mono">
+            GreenFluence 2026 is jointly organised by Earth&apos;s Ants Youth Environmental Organization and the Department of Environmental Science and Disaster Management (ESDM), Daffodil International University. It brings together school, college, and university students from all 64 districts of Bangladesh.
+          </TypographyP>
+          <ProjectsLinks live={this.live} repo={this.github} />
+          <TypographyH3 className="my-4 mt-8">Our purpose</TypographyH3>
+          <p className="font-mono mb-2">
+            The competition helps young people use creativity and communication to address real environmental problems. Participants design advertising campaigns connected to real brands in Bangladesh, aiming to inspire meaningful behaviour change.
+          </p>
+          <TypographyH3 className="my-4 mt-8">Our vision</TypographyH3>
+          <p className="font-mono mb-2">
+            GreenFluence equips young people to think like responsible business leaders and creative storytellers, building a generation that cares for the planet and inspires others to do the same.
+          </p>
+        </div>
+      );
+    },
+  },
+  {
+    id: "pointrobo",
+    category: "Interactive 3D landing page",
+    title: "PointRobo",
+    src: "https://image.thum.io/get/width/1200/crop/900/noanimate/https://pointrobo.netlify.app/",
+    background: "/assets/backgrounds/peakposts.jpg",
+    screenshots: [],
+    skills: {
+      frontend: [textBrand("HTML"), textBrand("CSS"), PROJECT_SKILLS.js, textBrand("Spline")],
+      backend: [],
+    },
+    live: "https://pointrobo.netlify.app/",
+    github: "https://github.com/Mobin24/HTML-CSS-JavaScript-100-Projects/tree/main/3D_Robot",
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono text-2xl text-center">
+            An interactive 3D landing page built with HTML, CSS, and Spline.
+          </TypographyP>
+          <TypographyP className="font-mono">
+            The 3D robot follows the cursor, bringing a playful interactive touch to the page.
+          </TypographyP>
+          <ProjectsLinks live={this.live} repo={this.github} />
+        </div>
+      );
+    },
+  },
+  {
+    id: "snake-game",
+    category: "Browser game",
+    title: "Snake Game",
+    src: "/assets/projects-screenshots/snake-game/preview.svg",
+    background: "/assets/backgrounds/kanbi.jpg",
+    screenshots: [],
+    skills: {
+      frontend: [textBrand("HTML"), textBrand("CSS"), PROJECT_SKILLS.js],
+      backend: [],
+    },
+    live: "https://relaxed-jelly-e80cf2.netlify.app/",
+    github: "https://github.com/Mobin24/Snake-Game-JS",
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono text-2xl text-center">
+            Remember the classic Snake game from old Nokia phones? I recreated that nostalgia using pure JavaScript.
+          </TypographyP>
+          <TypographyP className="font-mono">
+            Built from scratch while strengthening my JavaScript skills, this project focuses on DOM manipulation, game loops, timers, and state management. It was a hands-on way to practice JavaScript logic and problem-solving.
+          </TypographyP>
+          <ProjectsLinks live={this.live} repo={this.github} />
+        </div>
+      );
+    },
+  },
+);
 export default projects;
