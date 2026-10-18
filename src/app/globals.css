@@ -8,11 +8,11 @@ body {
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 42 45% 93%;
     --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
+    --card: 42 40% 96%;
     --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
+    --popover: 42 40% 96%;
     --popover-foreground: 222.2 84% 4.9%;
     /* space accent — monochrome ink (theme-aware) */
     --primary: 222 47% 11%;
@@ -77,6 +77,10 @@ body {
     @apply border-border;
   }
 
+  html {
+    background-color: hsl(var(--background));
+  }
+
   /* Medium (500) is the site-wide default weight. Un-weighted text (body,
      labels, nav) follows this; elements with an explicit font-bold/semibold
      utility keep their own weight. */
@@ -85,7 +89,7 @@ body {
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
   }
 
   /* Headings use the display font (--font-display, Unbounded). Body and

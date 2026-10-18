@@ -1,45 +1,52 @@
 "use client";
-import React from "react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import ContactForm from "../ContactForm";
+import { Mail, Phone, MessageCircle } from "lucide-react";
 import { config } from "@/data/config";
 import { SectionHeader } from "./section-header";
 import SectionWrapper from "../ui/section-wrapper";
 
 const ContactSection = () => {
+  const phoneLink = config.phone.replace(/[^\d+]/g, "");
+
   return (
-    <SectionWrapper id="contact" className="min-h-screen max-w-7xl mx-auto ">
-      <SectionHeader id='contact' className="relative mb-14" title={
+    <SectionWrapper id="contact" className="max-w-7xl mx-auto pt-24 pb-12">
+      <SectionHeader id='contact' className="relative top-0 mb-14" title={
         <>
           LET&apos;S WORK <br />
           TOGETHER
         </>} />
-      <div className="grid grid-cols-1 md:grid-cols-2 z-[9999] mx-4">
-        <Card className="min-w-7xl bg-white/70 dark:bg-black/70 backdrop-blur-sm rounded-xl mt-10 md:mt-20">
-          <CardHeader>
-            <CardTitle className="text-4xl">Contact Form</CardTitle>
-            <CardDescription>
-              Please contact me directly at{" "}
-              <a
-                target="_blank"
-                href={`mailto:${config.email}`}
-                className="text-gray-200 cursor-can-hover rounded-lg"
-              >
-                {config.email.replace(/@/g, "(at)")}
-              </a>{" "}
-              or drop your info here.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ContactForm />
-          </CardContent>
-        </Card>
+      <div className="z-[9999] mx-4 mt-10 flex flex-col items-center gap-5 text-center md:mt-20">
+        <p className="max-w-xl text-muted-foreground">
+          I&apos;m open to discussing DevOps opportunities and collaborations.
+          Reach me by email, phone, or WhatsApp:
+        </p>
+        <div className="flex flex-wrap justify-center gap-3">
+          <a
+            className="inline-flex h-10 items-center justify-center whitespace-nowrap rounded-md bg-sky-700 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            href={`mailto:${config.email}`}
+            aria-label={`Email ${config.email}`}
+          >
+            <Mail className="mr-2 h-4 w-4" />
+            {config.email}
+          </a>
+          <a
+            className="inline-flex h-10 items-center justify-center whitespace-nowrap rounded-md bg-emerald-700 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            href={`tel:${phoneLink}`}
+            aria-label={`Call ${config.phone}`}
+          >
+            <Phone className="mr-2 h-4 w-4" />
+            {config.phone}
+          </a>
+          <a
+            className="inline-flex h-10 items-center justify-center whitespace-nowrap rounded-md bg-green-700 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-green-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            href={`https://wa.me/${config.phone.replace(/\D/g, "")}`}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`Message ${config.phone} on WhatsApp`}
+          >
+            <MessageCircle className="mr-2 h-4 w-4" />
+            WhatsApp
+          </a>
+        </div>
       </div>
     </SectionWrapper>
   );

@@ -1,5 +1,6 @@
 .nav {
   overflow: hidden;
+  padding-bottom: 4.5rem;
 
   .wrapper {
     position: relative;
@@ -17,6 +18,8 @@
 
 @media only screen and (min-width: 1000px) {
   .nav {
+    padding-bottom: 0;
+
     .wrapper {
       margin-bottom: 0px;
       justify-content: space-between;

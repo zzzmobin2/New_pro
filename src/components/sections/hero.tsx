@@ -11,33 +11,35 @@ import {
 import { usePreloader } from "../preloader";
 import { BlurIn, BoxReveal } from "../reveal-animations";
 import ScrollDownIcon from "../scroll-down-icon";
-import { SiGithub, SiLinkedin, SiX } from "react-icons/si";
+import { SiFacebook, SiGithub, SiLinkedin, SiYoutube } from "react-icons/si";
 import { config } from "@/data/config";
 
 import SectionWrapper from "../ui/section-wrapper";
 
 const HeroSection = () => {
   const { isLoading } = usePreloader();
+  const authorWords = config.author.split(" ");
+  const firstLine = authorWords.slice(0, 2).join(" ");
+  const secondLine = authorWords.slice(2).join(" ");
 
   return (
-    <SectionWrapper id="hero" className={cn("relative w-full h-screen")}>
-      <div className="grid md:grid-cols-2">
+    <SectionWrapper id="hero" className={cn("relative w-full h-svh min-h-[620px]")}>
+      <div className="grid w-full min-w-0 md:grid-cols-2">
         <div
           className={cn(
             "h-[calc(100dvh-3rem)] md:h-[calc(100dvh-4rem)] z-[2]",
-            "col-span-1",
-            "flex flex-col justify-start md:justify-center items-center md:items-start",
-            "pt-28 sm:pb-16 md:p-20 lg:p-24 xl:p-28"
+            "col-span-1 flex w-full min-w-0 flex-col items-center justify-start md:items-start md:justify-center",
+            "px-6 pt-28 sm:px-10 sm:pb-16 md:p-20 lg:p-24 xl:p-28"
           )}
         >
           {!isLoading && (
-            <div className="flex flex-col">
+            <div className="flex w-full min-w-0 flex-col">
               <div>
                 <BlurIn delay={0.7}>
                   <p
                     className={cn(
-                      "md:self-start mt-4 font-medium text-md text-slate-500 dark:text-zinc-400",
-                      "cursor-default sm:text-xl md:text-xl whitespace-nowrap bg-clip-text "
+                      "mt-4 cursor-default whitespace-nowrap bg-clip-text text-sm font-medium text-slate-500 dark:text-zinc-400",
+                      "sm:text-xl md:self-start"
                     )}
                   >
                     Hi, I am
@@ -50,14 +52,14 @@ const HeroSection = () => {
                     <TooltipTrigger asChild>
                       <h1
                         className={cn(
-                          "-ml-[6px] leading-none text-transparent text-slate-800 text-left",
-                          "font-bold text-7xl md:text-7xl lg:text-8xl xl:text-9xl",
+                          "w-full text-center leading-none text-transparent text-slate-800 md:-ml-[6px] md:text-left",
+                          "font-bold text-[clamp(3.125rem,14vw,4.25rem)] sm:text-7xl lg:text-8xl xl:text-9xl",
                           "cursor-default text-edge-outline font-display "
                         )}
                       >
-                        {config.author.split(" ")[0]}
+                        {firstLine}
                         <br className="md:block hiidden" />
-                        {config.author.split(" ")[1]}
+                        {secondLine}
                       </h1>
                     </TooltipTrigger>
                     <TooltipContent
@@ -72,30 +74,24 @@ const HeroSection = () => {
                 <BlurIn delay={1.2}>
                   <p
                     className={cn(
-                      "md:self-start md:mt-4 font-medium text-md text-slate-500 dark:text-zinc-400",
-                      "cursor-default sm:text-xl md:text-xl whitespace-nowrap bg-clip-text "
+                      "mt-3 cursor-default whitespace-nowrap bg-clip-text text-sm font-medium text-slate-500 dark:text-zinc-400",
+                      "sm:mt-4 sm:text-xl md:self-start"
                     )}
                   >
-                    A Full Stack Web Developer
+                    An Aspiring DevOps Engineer
                   </p>
                 </BlurIn>
               </div>
-              <div className="mt-8 flex flex-col gap-3 w-fit">
-                <Link
-                  href={
-                    "https://drive.google.com/file/d/1MTSsUA8V7Po2AsNXT8kZ5sLOpzC8l7qm/view?usp=sharing"
-                  }
-                  target="_blank"
-                  className="flex-1"
-                >
-                  <BoxReveal delay={2} width="100%" >
+              <div className="mt-6 flex w-fit max-w-full flex-col gap-3 sm:mt-8">
+                <Link href="/resume" className="flex-1">
+                  <BoxReveal delay={2} width="100%">
                     <Button className="flex items-center gap-2 w-full">
                       <File size={24} />
                       <p>Resume</p>
                     </Button>
                   </BoxReveal>
                 </Link>
-                <div className="md:self-start flex gap-3">
+                <div className="flex flex-wrap justify-center gap-2 md:self-start sm:gap-3">
                   <Tooltip delayDuration={300}>
                     <TooltipTrigger asChild>
                       <Link href={"#contact"}>
@@ -111,31 +107,44 @@ const HeroSection = () => {
                       <p>pls 🥹 🙏</p>
                     </TooltipContent>
                   </Tooltip>
-                  <div className="flex items-center h-full gap-2">
-                    <Link
-                      href={config.social.twitter}
-                      target="_blank"
-                    >
-                      <Button variant={"outline"}>
-                        <SiX size={24} />
-                      </Button>
-                    </Link>
+                  <div className="flex h-full items-center gap-1.5 sm:gap-2">
                     <Link
                       href={config.social.github}
                       target="_blank"
+                      rel="noreferrer"
                       className="cursor-can-hover"
                     >
-                      <Button variant={"outline"}>
-                        <SiGithub size={24} />
+                      <Button variant="outline" aria-label="GitHub" className="size-11 rounded-lg bg-background/80 shadow-lg shadow-black/20 hover:bg-accent">
+                        <SiGithub className="text-slate-800 dark:text-white dark:drop-shadow-[0_0_6px_rgba(255,255,255,0.85)]" size={32} />
+                      </Button>
+                    </Link>
+                    <Link
+                      href={config.social.youtube}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <Button variant="outline" aria-label="YouTube" className="size-11 rounded-lg bg-background/80 text-red-600 shadow-lg shadow-black/20 hover:bg-accent">
+                        <SiYoutube size={32} />
                       </Button>
                     </Link>
                     <Link
                       href={config.social.linkedin}
                       target="_blank"
+                      rel="noreferrer"
                       className="cursor-can-hover"
                     >
-                      <Button variant={"outline"}>
-                        <SiLinkedin size={24} />
+                      <Button variant="outline" aria-label="LinkedIn" className="size-11 rounded-lg bg-background/80 text-[#0A66C2] shadow-lg shadow-black/20 hover:bg-accent">
+                        <SiLinkedin size={32} />
+                      </Button>
+                    </Link>
+                    <Link
+                      href={config.social.facebook}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="cursor-can-hover"
+                    >
+                      <Button variant="outline" aria-label="Facebook" className="size-11 rounded-lg bg-background/80 text-[#1877F2] shadow-lg shadow-black/20 hover:bg-accent">
+                        <SiFacebook size={32} />
                       </Button>
                     </Link>
                   </div>

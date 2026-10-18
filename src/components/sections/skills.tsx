@@ -4,7 +4,7 @@ import { useEffect, type CSSProperties } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SectionWrapper from "../ui/section-wrapper";
 import { SectionHeader } from "./section-header";
-import { SKILLS } from "@/data/constants";
+import { SKILL_ORDER, SKILLS } from "@/data/constants";
 import { usePerfProfile } from "@/hooks/use-perf-profile";
 import { cn } from "@/lib/utils";
 import { useSceneStatus } from "@/lib/scene-health";
@@ -38,7 +38,9 @@ const SkillsSection = () => {
         className={showGrid ? "static mb-14" : undefined}
       />
       <ul className={showGrid ? "mx-auto grid w-full max-w-5xl grid-cols-2 gap-3 px-4 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-5" : "sr-only"}>
-        {Object.values(SKILLS).map((skill) => (
+        {SKILL_ORDER.map((name) => {
+          const skill = SKILLS[name];
+          return (
           <li
             key={skill.name}
             style={{ "--skill": skill.color } as CSSProperties}
@@ -47,7 +49,7 @@ const SkillsSection = () => {
               // disabled so the 3D canvas can be clicked through); re-enable on
               // the whole card so hover isn't limited to the icon/label.
               "pointer-events-auto",
-              "group relative flex flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl p-5",
+              "group relative flex min-w-0 flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl p-4 sm:p-5",
               "border border-border/60 bg-secondary/20 backdrop-blur-sm",
               "transition-[transform,border-color,background-color,box-shadow] duration-300",
               "hover:-translate-y-1 hover:border-[var(--skill)] hover:bg-secondary/40",
@@ -69,11 +71,12 @@ const SkillsSection = () => {
               loading="lazy"
               className="relative size-9 object-contain drop-shadow-sm transition-transform duration-300 group-hover:scale-110 md:size-11"
             />
-            <span className="relative text-center text-xs font-medium text-foreground/80 transition-colors group-hover:text-foreground md:text-sm">
+            <span className="relative w-full min-w-0 break-words text-center text-xs font-medium text-foreground/80 transition-colors group-hover:text-foreground md:text-sm">
               {skill.label}
             </span>
           </li>
-        ))}
+          );
+        })}
       </ul>
     </SectionWrapper>
   );

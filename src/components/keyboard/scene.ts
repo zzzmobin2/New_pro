@@ -45,7 +45,7 @@ const KIT = {
 
 export const KEYBOARD_MODEL_URL = "/assets/keyboard/keycaps.glb";
 
-export function createKeyboardScene(skills: readonly KeyboardSkill[], columns = 6): KeyboardScene {
+export function createKeyboardScene(skills: readonly KeyboardSkill[], columns = 4): KeyboardScene {
   if (!skills.length || skills.length > 96) throw new RangeError("Choose between 1 and 96 keyboard skills");
   if (!Number.isInteger(columns) || columns < 1 || columns > 12) throw new RangeError("Keyboard columns must be between 1 and 12");
   if (new Set(skills.map((s) => s.name)).size !== skills.length) throw new Error("Keyboard skill names must be unique");
@@ -150,7 +150,7 @@ export function createKeyboardScene(skills: readonly KeyboardSkill[], columns = 
         maps: { map: iconId, normalMap: null, roughnessMap: null },
       });
       add({ id: newId("nd"), name: `Logo ${skill.name}`, type: "mesh", materialId: logoMaterial,
-        geometry: { kind: "plane", params: { width: 0.52, height: 0.52 } },
+        geometry: { kind: "plane", params: { width: 0.66, height: 0.66 } },
         transform: { ...transform([0, KIT.logoY, 0]), rotation: [-Math.PI / 2, 0, 0] },
         visible: true, castShadow: false, receiveShadow: true, children: [] }, nodeId);
     }

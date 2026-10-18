@@ -1,44 +1,42 @@
 const config = {
-  title: "Naresh Khatri | Full-Stack Developer",
+  title: "Abdullah All Mobin | DevOps Engineer",
   description: {
-    long: "Explore the portfolio of Naresh, a full-stack developer and creative technologist specializing in interactive web experiences, 3D animations, and innovative projects. Discover my latest work, including Coding Ducks, The Booking Desk, Ghostchat, and more. Let's build something amazing together!",
+    long: "Explore the portfolio of Abdullah All Mobin, an aspiring DevOps engineer and computer science undergraduate building responsive web experiences while developing cloud, automation, and deployment skills.",
     short:
-      "Discover the portfolio of Naresh, a full-stack developer creating interactive web experiences and innovative projects.",
+      "Aspiring DevOps engineer and computer science student building practical cloud, automation, and deployment skills.",
   },
   keywords: [
-    "Naresh",
+    "Abdullah All Mobin",
+    "Front-end developer",
     "portfolio",
-    "full-stack developer",
-    "creative technologist",
-    "web development",
-    "3D animations",
-    "interactive websites",
-    "Coding Ducks",
-    "The Booking Desk",
-    "Ghostchat",
-    "web design",
+    "React developer",
+    "Tailwind CSS",
     "GSAP",
-    "React",
-    "Next.js",
     "Framer Motion",
+    "Computer Science",
+    "web development",
+    "UI engineering",
+    "React.js",
+    "Next.js",
   ],
-  author: "Naresh Khatri",
-  email: "naresh.khatri2345@gmail.com",
+  author: "Abdullah All Mobin",
+  email: "mdabdullahallmobin00@gmail.com",
+  phone: "+880 1774-522424",
   site: "https://nareshkhatri.dev",
 
   // for github stars button
-  githubUsername: "naresh-khatri",
+  githubUsername: "Mobin24",
   githubRepo: "3d-portfolio",
 
   get ogImg() {
     return this.site + "/assets/seo/og-image.png";
   },
   social: {
-    twitter: "https://x.com/nothotchaddi",
-    linkedin: "https://www.linkedin.com/in/naresh-khatri/",
-    instagram: "https://www.instagram.com/hotchaddi",
-    facebook: "https://www.facebook.com/HotChaddi/",
-    github: "https://github.com/Naresh-Khatri",
+    youtube: "https://www.youtube.com/@AbdullahAllMobin00",
+    linkedin: "https://www.linkedin.com/in/mobin00",
+    instagram: "https://www.instagram.com/mobin24",
+    facebook: "https://www.facebook.com/abdullah.al.mobin.787582/",
+    github: "https://github.com/Mobin24",
   },
 };
 export { config };
