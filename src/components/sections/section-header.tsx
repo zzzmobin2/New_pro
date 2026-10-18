@@ -3,7 +3,7 @@ import Link from "next/link"
 import { BoxReveal } from "../reveal-animations"
 import { ReactNode } from "react"
 
-export const SectionHeader = ({ id, title, desc, className }: { id: string, title: string | ReactNode, desc?: string, className?: string }) => {
+export const SectionHeader = ({ id, title, desc, className, descClassName }: { id: string, title: string | ReactNode, desc?: string, className?: string, descClassName?: string }) => {
   return (
 
     <div className={cn("top-[70px] sticky mb-96", className)}>
@@ -19,7 +19,7 @@ export const SectionHeader = ({ id, title, desc, className }: { id: string, titl
           </h2>
         </BoxReveal>
       </Link>
-      <p className="mx-auto line-clamp-4 max-w-3xl font-normal text-base text-center text-muted-foreground">
+      <p className={cn("mx-auto line-clamp-4 max-w-3xl font-normal text-base text-center text-muted-foreground", descClassName)}>
         {desc}
       </p>
     </div>

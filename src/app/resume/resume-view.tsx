@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "motion/react";
 import { Download, ArrowLeft } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import ResumeDoodle from "./resume-doodle";
 
 // Drop the compiled PDF here: public/Naresh_Khatri_Resume.pdf
@@ -36,16 +36,14 @@ export default function ResumeView() {
             <ArrowLeft className="h-4 w-4" />
             Back to portfolio
           </Link>
-          <Button>
-            <a
-              href={RESUME_PATH}
-              download
-              className="flex gap-2 text-sm transition-colors hover:text-foreground"
-            >
-              <Download className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
-              Download PDF
-            </a>
-          </Button>
+          <a
+            href={RESUME_PATH}
+            download="Abdullah_All_Mobin_Resume.pdf"
+            className={buttonVariants({ className: "group gap-2" })}
+          >
+            <Download className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
+            Download PDF
+          </a>
         </motion.div>
       </div>
 

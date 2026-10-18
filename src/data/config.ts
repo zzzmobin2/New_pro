@@ -34,7 +34,7 @@ const config = {
   social: {
     youtube: "https://www.youtube.com/@AbdullahAllMobin00",
     linkedin: "https://www.linkedin.com/in/mobin00",
-    instagram: "https://www.instagram.com/mobin24",
+    instagram: "https://www.instagram.com/strangersoul_00/",
     facebook: "https://www.facebook.com/abdullah.al.mobin.787582/",
     github: "https://github.com/Mobin24",
   },

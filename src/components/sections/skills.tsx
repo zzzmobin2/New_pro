@@ -34,8 +34,9 @@ const SkillsSection = () => {
       <SectionHeader
         id="skills"
         title="Tech Stack"
-        desc={showGrid ? "Tools I build with" : "(hint: press a key)"}
+        desc={showGrid ? "Tools I build with" : "Hover, tap, or press a key to explore each skill"}
         className={showGrid ? "static mb-14" : undefined}
+        descClassName={showGrid ? undefined : "mt-3 w-fit rounded-full border border-border/70 bg-background/85 px-4 py-2 text-sm font-semibold text-foreground shadow-sm backdrop-blur-md"}
       />
       <ul className={showGrid ? "mx-auto grid w-full max-w-5xl grid-cols-2 gap-3 px-4 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-5" : "sr-only"}>
         {SKILL_ORDER.map((name) => {
