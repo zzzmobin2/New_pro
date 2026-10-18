@@ -1,4 +1,7 @@
+"use client";
+
 import React from "react";
+import { useSyncExternalStore } from "react";
 import Link from "next/link";
 import { footer } from "./config";
 import { Button } from "../ui/button";
@@ -6,7 +9,12 @@ import SocialMediaButtons from "../social/social-media-icons";
 import { config } from "@/data/config";
 
 function CopyrightYear() {
-  const year = new Date().getFullYear();
+  const year = useSyncExternalStore(
+    () => () => {},
+    () => new Date().getFullYear(),
+    () => null,
+  );
+
   return <>{year}</>;
 }
 
