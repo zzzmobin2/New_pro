@@ -22,8 +22,7 @@ const unbounded = Unbounded({
 });
 
 export const metadata: Metadata = {
-  // pins every relative/OG url to the .dev origin so nothing canonicalises back to .site
-  metadataBase: new URL(config.site),
+  metadataBase: new URL("https://mobinsite.vercel.app"),
   alternates: { canonical: "./" },
   title: config.title,
   description: config.description.long,
@@ -32,12 +31,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: config.title,
     description: config.description.short,
-    url: config.site,
+    url: "https://mobinsite.vercel.app",
     images: [
       {
-        url: config.ogImg,
-        width: 800,
-        height: 600,
+        url: "/assets/nav-link-previews/landing.png",
+        width: 1132,
+        height: 768,
         alt: "Portfolio preview",
       },
     ],
@@ -47,7 +46,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: config.title,
     description: config.description.short,
-    images: [config.ogImg],
+    images: ["/assets/nav-link-previews/landing.png"],
   },
   robots: {
     index: true,

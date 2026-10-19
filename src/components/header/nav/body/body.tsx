@@ -66,6 +66,7 @@ export default function Body({
             href={href}
             target={target}
             className="cursor-can-hover rounded-lg"
+            onMouseEnter={() => setSelectedLink({ isActive: true, index })}
           >
             <motion.p
               className={cn(
@@ -73,8 +74,6 @@ export default function Body({
                 currentHref !== href ? "text-muted-foreground" : "underline"
               )}
               onClick={() => setIsActive(false)}
-              onMouseOver={() => setSelectedLink({ isActive: true, index })}
-              onMouseLeave={() => setSelectedLink({ isActive: false, index })}
               variants={blur}
               animate={
                 selectedLink.isActive && selectedLink.index !== index

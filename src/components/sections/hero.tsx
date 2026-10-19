@@ -24,7 +24,7 @@ const HeroSection = () => {
 
   return (
     <SectionWrapper id="hero" className={cn("relative w-full h-svh min-h-[620px]")}>
-      <div className="grid w-full min-w-0 md:grid-cols-2">
+      <div className="relative top-[2cm] grid w-full min-w-0 md:grid-cols-2">
         <div
           className={cn(
             "h-[calc(100dvh-3rem)] md:h-[calc(100dvh-4rem)] z-[2]",

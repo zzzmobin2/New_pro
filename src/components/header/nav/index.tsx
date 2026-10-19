@@ -35,7 +35,12 @@ const Index: React.FC<IndexProps> = ({ setIsActive }) => {
       onClick={() => setIsActive(false)}
       className={cn(styles.nav, "relative")}
     >
-      <div className={cn(styles.wrapper, 'flex justify-end sm:justify-start')}>
+      <div
+        className={cn(styles.wrapper, 'flex justify-end sm:justify-start')}
+        onMouseLeave={() =>
+          setSelectedLink({ isActive: false, index: selectedLink.index })
+        }
+      >
         <div className={styles.container}>
           <Body
             links={links}
